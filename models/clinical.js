@@ -12,14 +12,18 @@ const clinicalSchema = new mongoose.Schema({
     },
     measuredDateTime: {
         type: Date,
-        dafault: Date.now,
+        default: Date.now,
         required: true
     },
     Patient: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Patient'
-    }
+        ref: Patient
+    },
 });
+
+clinicalSchema.statics.findByPatientId = function(patientId) {
+    return this.find({ Patient: patientId });
+  };
 
 const Clinical = mongoose.model('Clinical', clinicalSchema);
 

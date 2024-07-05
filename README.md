@@ -59,3 +59,38 @@ then run the server
 ```bash
 npm run dev
 ```
+
+## run with docker compose
+```bash
+docker compose build
+```
+
+```bash
+docker compose up
+```
+
+### Create a Patient
+curl -X POST -H "Content-Type: application/json" -d '{"firstName":"Miguel", "lastName":"Montanez", "age":34}' http://localhost:8000/clinicalapi/patients
+
+### Update a Patient
+curl -X PUT -H "Content-Type: application/json" -d '{"firstName":"Miguel", "lastName":"Montanez", "age":34}' http://localhost:8000/clinicalapi/patients/667f06f998023907efd6dbb9
+
+
+
+### query de data base
+* Start the MongoDB shell
+```bash
+mongosh
+```
+
+* Switch to your database
+```bash
+use patientclinicals
+```
+
+* Query the collection
+
+```bash
+db.patients.find()
+db.clinicals.find()
+```
